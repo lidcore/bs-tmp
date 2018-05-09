@@ -2,13 +2,31 @@
 'use strict';
 
 var Tmp = require("tmp");
+var Queue = require("bs-platform/lib/js/queue.js");
+var Fs$LidcoreBsNode = require("@lidcore/bs-node/src/fs.js");
 
-function make(dir, prefix, postfix, _) {
+function init(dir, _) {
+  return /* tuple */[
+          dir,
+          Queue.create(/* () */0)
+        ];
+}
+
+function update(dir, param) {
+  return /* tuple */[
+          /* Some */[dir],
+          param[1]
+        ];
+}
+
+function make($staropt$star, prefix, postfix, param) {
+  var makeDir = $staropt$star ? $staropt$star[0] : false;
   var tmp = {
     discardDescriptor: true
   };
-  if (dir) {
-    tmp.dir = dir[0];
+  var tmp$1 = param[0];
+  if (tmp$1) {
+    tmp.dir = tmp$1[0];
   }
   if (prefix) {
     tmp.prefix = prefix[0];
@@ -16,8 +34,34 @@ function make(dir, prefix, postfix, _) {
   if (postfix) {
     tmp.postfix = postfix[0];
   }
-  return Tmp.fileSync(tmp);
+  var params = tmp;
+  var tmp$2 = makeDir ? Tmp.dirSync(params) : Tmp.fileSync(params);
+  var path = tmp$2.name;
+  Queue.push(/* tuple */[
+        makeDir,
+        path
+      ], param[1]);
+  return path;
 }
 
+function cleanup(param) {
+  return Queue.iter((function (param) {
+                var path = param[1];
+                try {
+                  if (param[0]) {
+                    return Fs$LidcoreBsNode.rmdirSync(path);
+                  } else {
+                    return Fs$LidcoreBsNode.unlinkSync(path);
+                  }
+                }
+                catch (exn){
+                  return /* () */0;
+                }
+              }), param[1]);
+}
+
+exports.init = init;
+exports.update = update;
 exports.make = make;
+exports.cleanup = cleanup;
 /* tmp Not a pure module */
