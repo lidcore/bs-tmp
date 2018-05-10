@@ -1,5 +1,3 @@
-open LidcoreBsNode;
-
 type params;
 
 [@bs.obj]
