@@ -7,7 +7,9 @@
     "clean": "bsb -clean-world",
     "test": "npm run build && jest"
   },
-  "keywords": ["BuckleScript"],
+  "keywords": [
+    "BuckleScript"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {

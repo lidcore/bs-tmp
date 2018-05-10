@@ -3,13 +3,10 @@
 
 var Tmp = require("tmp");
 
-function make(dir, prefix, postfix, _) {
+function make(prefix, postfix, _) {
   var tmp = {
     discardDescriptor: true
   };
-  if (dir) {
-    tmp.dir = dir[0];
-  }
   if (prefix) {
     tmp.prefix = prefix[0];
   }
@@ -17,9 +14,7 @@ function make(dir, prefix, postfix, _) {
     tmp.postfix = postfix[0];
   }
   var params = tmp;
-  return (
-          dir ? Tmp.dirSync(params) : Tmp.fileSync(params)
-        ).name;
+  return Tmp.fileSync(params).name;
 }
 
 exports.make = make;

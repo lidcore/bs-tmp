@@ -2,13 +2,7 @@ type params;
 
 [@bs.obj]
 external params :
-  (
-    ~dir: string=?,
-    ~prefix: string=?,
-    ~postfix: string=?,
-    ~discardDescriptor: bool=?,
-    unit
-  ) =>
+  (~discardDescriptor: bool=?, ~prefix: string=?, ~postfix: string=?, unit) =>
   params =
   "";
 
@@ -18,14 +12,9 @@ type tmp = {. "name": string};
 
 [@bs.module "tmp"] external dirSync : params => tmp = "";
 
-let make = (~dir=?, ~prefix=?, ~postfix=?, ()) => {
-  let params =
-    params(~dir?, ~prefix?, ~postfix?, ~discardDescriptor=true, ());
-  let tmp =
-    switch (dir) {
-    | None => fileSync(params)
-    | Some(_) => dirSync(params)
-    };
+let make = (~prefix=?, ~postfix=?, ()) => {
+  let params = params(~prefix?, ~postfix?, ~discardDescriptor=true, ());
+  let tmp = fileSync(params);
   let path = tmp##name;
   path;
 };
