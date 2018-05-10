@@ -3,7 +3,7 @@
 
 var Tmp = require("tmp");
 
-function make(prefix, postfix, _) {
+function tempFile(prefix, postfix, _) {
   var tmp = {
     discardDescriptor: true
   };
@@ -17,5 +17,5 @@ function make(prefix, postfix, _) {
   return Tmp.fileSync(params).name;
 }
 
-exports.make = make;
+exports.tempFile = tempFile;
 /* tmp Not a pure module */

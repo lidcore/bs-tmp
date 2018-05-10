@@ -12,7 +12,7 @@ type tmp = {. "name": string};
 
 [@bs.module "tmp"] external dirSync : params => tmp = "";
 
-let make = (~prefix=?, ~postfix=?, ()) => {
+let tempFile = (~prefix=?, ~postfix=?, ()) => {
   let params = params(~prefix?, ~postfix?, ~discardDescriptor=true, ());
   let tmp = fileSync(params);
   let path = tmp##name;
