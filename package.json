@@ -1,6 +1,7 @@
 {
   "name": "bs-tmp",
-  "version": "0.1.0",
+  "description": "bucklescript bindings and sugar for node tempfiles",
+  "version": "0.0.1",
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
@@ -8,10 +9,21 @@
     "test": "npm run build && jest"
   },
   "keywords": [
-    "BuckleScript"
+    "bucklescript",
+    "temporary",
+    "tmp",
+    "temp",
+    "tempdir",
+    "tempfile",
+    "tmpdir",
+    "tmpfile"
   ],
-  "author": "",
+  "author": "LIDCORE IT <it@lidcore.com>",
   "license": "MIT",
+  "homepage": "http://github.com/lidcore/bs-tmp",
+  "bugs": {
+    "url": "http://github.com/lidcore/bs-tmp/issues"
+  },
   "devDependencies": {
     "@glennsl/bs-jest": "^0.4.2",
     "bs-platform": "^3.0.0"
