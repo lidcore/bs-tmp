@@ -5,5 +5,5 @@ bucklescript bindings and sugar for node tempfiles, based on [node-tmp](https://
 ## Usage
 
 ```
-let path = Tmp.tempFile();
+let path = BsTmp.tempFile();
 ```
