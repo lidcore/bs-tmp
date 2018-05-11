@@ -1,7 +1,8 @@
 {
   "name": "bs-tmp",
   "description": "bucklescript bindings and sugar for node tempfiles",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "main": "src/Tmp.re",
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
