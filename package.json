@@ -1,7 +1,7 @@
 {
   "name": "bs-tmp",
   "description": "bucklescript bindings and sugar for node tempfiles",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
@@ -19,7 +19,7 @@
     "tmpfile"
   ],
   "author": "LIDCORE IT <it@lidcore.com>",
-  "license": "MIT",
+  "license": "BSD-2-Clause",
   "homepage": "http://github.com/lidcore/bs-tmp",
   "bugs": {
     "url": "http://github.com/lidcore/bs-tmp/issues"
