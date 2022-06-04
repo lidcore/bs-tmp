@@ -10,7 +10,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:10
 
-    working_directory: ~/bs-tmp
+    working_directory: ~./tmp
     steps:
       - checkout
       # Download and cache dependencies
@@ -27,4 +27,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm test
+      - run: npm run build
+ 
